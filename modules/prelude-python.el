@@ -43,6 +43,21 @@
 
 (add-hook 'python-mode-hook (lambda () (run-hooks 'prelude-python-mode-hook)))
 
+;; pymacs
+(require 'pymacs)
+(setenv "PYTHONPATH" (concat prelude-vendor-dir "pymacs/"))
+(add-to-list 'pymacs-load-path (concat prelude-dir "lib/python/"))
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+;; ropemacs
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+
 (provide 'prelude-python)
 
 ;;; prelude-python.el ends here
