@@ -33,7 +33,7 @@
 
 ;;; Code:
 
-(require 'python)
+(require 'python-mode)
 
 (defun prelude-python-mode-defaults ()
   (run-hooks 'prelude-prog-mode-hook) ;; run manually; not derived from prog-mode
