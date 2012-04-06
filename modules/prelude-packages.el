@@ -34,8 +34,9 @@
 ;;; Code:
 
 (require 'package)
+(require 'melpa)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ; this is a workaround for a bug in emacs' http fetching, see
@@ -44,8 +45,8 @@
 
 (defvar prelude-packages
   '(ack-and-a-half auctex clojure-mode coffee-mode deft expand-region
-                   gist groovy-mode haml-mode haskell-mode inf-ruby
-                   magit magithub markdown-mode mediawiki paredit projectile
+                   gist haml-mode haskell-mode inf-ruby
+                   magit magithub markdown-mode paredit projectile
                    python sass-mode rainbow-mode scss-mode solarized-theme
                    volatile-highlights yaml-mode yari zenburn-theme)
   "A list of packages to ensure are installed at launch.")
