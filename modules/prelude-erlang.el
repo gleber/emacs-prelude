@@ -54,7 +54,7 @@
          (pref (concat "cd " dir " && "))
          (cmd (cond ((file-exists-p (expand-file-name "rebar" dir))    "./rebar compile")
                     ((executable-find "rebar")                         "rebar compile")
-                    ((file-exists-p (expand-file-name "Makefile" dir)) "Makefile")
+                    ((file-exists-p (expand-file-name "Makefile" dir)) "make")
                     (t nil))))
     (if cmd
         (compilation-start (concat pref cmd))
