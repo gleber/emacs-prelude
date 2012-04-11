@@ -51,7 +51,7 @@
 (global-set-key (kbd "C-x ^") 'join-line)
 
 ;; Start proced in a similar manner to dired
-(global-set-key (kbd "C-x p") 'proced)
+;;(global-set-key (kbd "C-x p") 'proced)
 
 ;; Start eshell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'eshell)
