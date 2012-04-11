@@ -37,15 +37,7 @@
   :type 'string
   :safe 'stringp)
 
-(when (require 'erlang-start nil t)
-
-  (eval-after-load 'erlang-mode
-    '(progn
-       (flymake-mode)))
-
-  (when (not (null wrangler-path))
-    (add-to-list 'load-path wrangler-path)
-    (require 'wrangler)))
+(require 'erlang-start nil t)
 
 (defun erlang-rebar-compile ()
   (interactive)
@@ -64,7 +56,22 @@
 (add-hook 'erlang-mode-hook (lambda ()
                               (make-variable-buffer-local 'projectile-project-root-files)
                               (setq projectile-project-root-files '("rebar.config" ".git" ".hg" ".bzr" ".projectile"))
-                              (setq erlang-compile-function 'erlang-rebar-compile)))
+                              (make-variable-buffer-local 'erlang-compile-function)
+                              (setq erlang-compile-function 'erlang-rebar-compile)
+
+                              (when (not (null wrangler-path))
+                                (when (not (featurep 'wrangler))
+                                  (add-to-list 'load-path wrangler-path)
+                                  (require 'wrangler)
+
+                                  )
+                                )
+                              (when (featurep 'wrangler)
+                                (when (not (get-buffer "*Wrangler-Erl-Shell*"))
+                                  (erlang-wrangler-on)
+                                  )
+                                )
+                              (flymake-mode)))
 
 (provide 'prelude-erlang)
 
